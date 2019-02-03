@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux'
+import cart from '../../redux/cart/reducers'
+
+const store = createStore(cart)
 
 class Main extends Component {
   render() {
