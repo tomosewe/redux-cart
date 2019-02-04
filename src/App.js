@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import Main from './view/components/Main';
+import Main from './view/containers/Main';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import cart from './redux/cart/reducers'
+import Nav from './view/components/Nav';
 
 class App extends Component {
+  store = createStore(cart)
+
   render() {
     return (
-      <React.Fragment>
-        <div className="nav-wrapper">
-          <div className="nav">
-            <h1>ReduxCart</h1>
-            <p>Cart</p>
-          </div>
-        </div>
-        <div className="main">
-          <Main />
-        </div>
-      </React.Fragment>
+    <Provider store={this.store}>
+      <Nav />
+      <Main />
+    </Provider>
     );
   }
 }
